@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Villain Input Form</title>
+</head>
+<body>
+
+<h2>Villains by Jashwanth reddy Baddam</h2>
+
+<form>
+  <label for="villain_secret">Funny Man</label>
+  <input type="password" id="villain_secret" value="Joker"><br>
+
+  <label for="villain_guess">Guess the villain</label>
+  <input type="text" id="villain_guess"><br>
+
+  <button type="button" onclick="checkVillain()">Check the guess</button>
+</form>
+
+<p id="result"></p>
+
+<script>
+let caught = 0;
+let gotAway = 0;
+
+function checkVillain() {
+  const secret = document.getElementById("villain_secret").value;
+  const guess = document.getElementById("villain_guess").value;
+
+  if (secret === guess) {
+    caught = caught + 1;
+    alert("You caught them");
+  } else {
+    gotAway = gotAway + 1;
+    alert("Maybe next time");
+  }
+
+  document.getElementById("result").innerHTML = "caught: " + caught + " gotAway: " + gotAway;
+}
+</script>
+
+</body>
+</html>
