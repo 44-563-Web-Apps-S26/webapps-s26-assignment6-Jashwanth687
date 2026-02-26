@@ -22,6 +22,16 @@
   <button type="button" onclick="choices()">Cruise Choices</button>
 </form>
 
+<form>
+  <label for="startCityInput">Enter starting city</label>
+  <input type="text" id="startCityInput" value="Athens"><br>
+
+  <label for="endCityInput">Enter ending city</label>
+  <input type="text" id="endCityInput"><br>
+
+  <button type="button" onclick="updateTrip()">Update the trip</button>
+</form>
+
 <p id="tripResult"></p>
 
 <script>
@@ -34,6 +44,20 @@ function choices() {
   my_trip.balt = document.getElementById("baltic").checked;
 
   document.getElementById("tripResult").innerHTML = JSON.stringify(my_trip);
+}
+
+function updateTrip() {
+  const startCity = document.getElementById("startCityInput").value;
+  const endCity = document.getElementById("endCityInput").value;
+
+  my_trip["startCity"] = startCity;
+  my_trip["endCity"] = endCity;
+
+  document.getElementById("tripResult").innerHTML = JSON.stringify(my_trip);
+}
+
+function updateTripl() {
+  updateTrip();
 }
 </script>
 
