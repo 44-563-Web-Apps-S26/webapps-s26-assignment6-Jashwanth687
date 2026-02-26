@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -21,9 +21,14 @@
 
 <p id="result"></p>
 
+<div>
+  <img id="treePic" src="Maple tree.png" alt="Tree image" width="150" height="150" onclick="updatePic()">
+</div>
+
 <script>
 let caught = 0;
 let gotAway = 0;
+let usePic = 1;
 
 function checkVillain() {
   const secret = document.getElementById("villain_secret").value;
@@ -39,7 +44,31 @@ function checkVillain() {
 
   document.getElementById("result").innerHTML = "caught: " + caught + " gotAway: " + gotAway;
 }
+
+function updatePic() {
+  const image = document.getElementById("treePic");
+
+  switch (usePic) {
+    case 1:
+      image.src = "Ash tree.png";
+      usePic = 2;
+      break;
+    case 2:
+      image.src = "Banyan tree.png";
+      usePic = 3;
+      break;
+    case 3:
+      image.src = "Maple tree.png";
+      usePic = 1;
+      break;
+    default:
+      image.src = "Ash tree.png";
+      usePic = 2;
+      break;
+  }
+}
 </script>
 
 </body>
 </html>
+
