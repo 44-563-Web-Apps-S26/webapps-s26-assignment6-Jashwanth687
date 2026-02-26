@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Progressive Tax Table Calculator</title>
+</head>
+<body>
+
+<h2>Jashwanth reddy Baddam tax table computation</h2>
+
+<form>
+  <label for="income">Enter income</label>
+  <input type="number" id="income" value="5000"><br>
+
+  <label for="baseRate">Enter the base tax rate</label>
+  <input type="number" id="baseRate" value="0.05" step="any"><br>
+
+  <label for="cutoff">Enter the cut off</label>
+  <input type="number" id="cutoff" value="7500"><br>
+
+  <label for="extRate">Enter the extended rate</label>
+  <input type="number" id="extRate" value="0.15" step="any"><br>
+
+  <button type="button" onclick="doTax()">Show tax table</button>
+</form>
+
+<p id="taxResult"></p>
+
+<script>
+function doTax() {
+  const income = Number(document.getElementById("income").value);
+  const cutoff = Number(document.getElementById("cutoff").value);
+  const baseRate = Number(document.getElementById("baseRate").value);
+  const extRate = Number(document.getElementById("extRate").value);
+
+  let taxTable = "";
+
+  for (let i = 1; i <= 5; i = i + 1) {
+    const incomeLevel = income * i;
+    let tax;
+
+    if (incomeLevel <= cutoff) {
+      tax = incomeLevel * baseRate;
+    } else {
+      tax = (cutoff * baseRate) + ((incomeLevel - cutoff) * extRate);
+    }
+
+    taxTable = taxTable + "incomeLevel " + incomeLevel + " is " + tax + "; ";
+  }
+
+  document.getElementById("taxResult").innerHTML = "Taxes are: " + taxTable;
+}
+</script>
+
+</body>
+</html>
